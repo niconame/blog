@@ -2,7 +2,7 @@ const id = getURLParameter('id');
 
 // 初始化 tagify
 $('[name=tags]').tagify();
-const tagifyTags = $('[name=tags]').data('tagify');
+let tagifyTags = $('[name=tags]').data('tagify');
 tagifyTags.on('add', (e) => {
   console.log(e.detail);
   console.log(tagifyTags.value);
@@ -36,11 +36,31 @@ $.ajax({
   });
 
 function edit() {
-  $('#title').attr('value');
-
-  // $.ajax({
-  //   'url': `https://richegg.top/posts/${id}`,
-  //   'method': 'PATCH',
-  //   'data': 
-  // })
+  var title_value = $('#title').val();
+  var content_value = $('#content').val();
+  var tags_value = $('#tags').val();
+  console.log(title_value);
+  const data = {};
+  data.title = title_value;
+  data.content = content_value;
+  data.tags = tags_value.split(',');
+  console.log(data);
+  $.ajax({
+    'url': `https://richegg.top/posts/${id}`,
+    'method': 'PATCH',
+    'data': JSON.stringify(data),
+    'xhrFields': {
+      'withCredentials': true
+    },
+    'success': function(result) {
+       console.log(result);
+       window.location.href = `post.html?id=${id}`;
+    },
+    'error': function(err) {
+      console.log(err);
+    }
+  });
 }
+$(function(){
+    $('#post').on('click', edit);
+});

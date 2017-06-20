@@ -34,7 +34,7 @@ $.ajax({
       postListHtml = postListHtml + postHtml;
     }
 
-    // 將文章列表的內容綁定到介面上
+    // 將文章列表的內容綁定到介面 (html 的 container)上
     $('.container').html(postListHtml); 
   })
   .catch( (err) => {

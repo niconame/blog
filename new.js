@@ -1,5 +1,3 @@
-const id = getURLParameter('id');
-
 // 初始化 tagify
 $('[name=tags]').tagify();
 const tagifyTags = $('[name=tags]').data('tagify');
@@ -16,23 +14,33 @@ tagifyTags.on('duplicate', (e) => {
   console.log(e);
 })
 
-//連接 API 
-$.ajax({
-  'url': `https://richegg.top/posts/${id}`,
-  'method': 'POST'
-})
-  .then( (post) => {
-    const id = post.id;
-    const title = post.title;
-    const content = post.content;
-    const tags = post.tags.join(',');
-
-    $('#title').attr('value', title);
-    $('#content').html(content);
-    $('#cancel').attr('href', `post.html?id=${id}`);
-    $('#post').attr('href', `post.html?id=${id}`);
-    tagifyTags.addTag(tags);
-  })
-  .catch( (err) => {
-    console.log(err);
+function edit() {
+  var title_value = $('#title').val();
+  var content_value = $('#content').val();
+  var tags_value = $('#tags').val();
+  console.log(title_value);
+  const data = {};
+  data.title = title_value;
+  data.content = content_value;
+  data.tags = tags_value.split(',');
+  console.log(data);
+  $.ajax({
+    'url': 'https://richegg.top/posts',
+    'method': 'POST',
+    'data': JSON.stringify(data),
+    'xhrFields': {
+      'withCredentials': true
+    },
+    'success': function(result) {
+       console.log(result);
+      window.location.href = `post.html?id=${result.id}`;
+    },
+    'error': function(err) {
+      console.log('err');
+      console.log(err);
+    }
   });
+}
+$(function(){
+    $('#post').on('click', edit);
+});

@@ -12,10 +12,14 @@ $('#login-form').submit( (event) => {
   $.ajax({
     url: `https://richegg.top/login`,
     method: 'POST',
-    data: JSON.stringify(data)
+    data: JSON.stringify(data),
+    'xhrFields': {
+      'withCredentials': true
+    }
   })
     .then( (author) => {
-      window.location.href = 'profile.html';
+      console.log(author);
+      window.location.href = 'index.html';
     })
     .catch( (err) => {
       $('#error-message').html(err.responseJSON.message);
