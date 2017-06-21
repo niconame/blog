@@ -34,7 +34,8 @@ $.ajax({
   .catch( (err) => {
     console.log(err);
   });
-
+  
+// 修改 post 內容
 function edit() {
   var title_value = $('#title').val();
   var content_value = $('#content').val();
@@ -45,6 +46,7 @@ function edit() {
   data.content = content_value;
   data.tags = tags_value.split(',');
   console.log(data);
+  
   $.ajax({
     'url': `https://richegg.top/posts/${id}`,
     'method': 'PATCH',

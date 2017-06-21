@@ -1,6 +1,6 @@
 // 取得所有文章
 $.ajax({
-  url: 'https://richegg.top/posts',
+  url: 'https://richegg.top/posts/',
   method: 'GET'
 })
   .then( (postList) => {
@@ -33,7 +33,7 @@ $.ajax({
 
       postListHtml = postListHtml + postHtml;
     }
-
+    
     // 將文章列表的內容綁定到介面 (html 的 container)上
     $('.container').html(postListHtml); 
   })
