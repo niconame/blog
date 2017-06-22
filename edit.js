@@ -34,8 +34,7 @@ $.ajax({
   .catch( (err) => {
     console.log(err);
   });
-  
-// 修改 post 內容
+// 修改文章內容
 function edit() {
   var title_value = $('#title').val();
   var content_value = $('#content').val();
@@ -50,6 +49,7 @@ function edit() {
   $.ajax({
     'url': `https://richegg.top/posts/${id}`,
     'method': 'PATCH',
+    contentType: 'application/json',
     'data': JSON.stringify(data),
     'xhrFields': {
       'withCredentials': true
@@ -65,4 +65,37 @@ function edit() {
 }
 $(function(){
     $('#post').on('click', edit);
+});
+
+// 刪除整篇文章
+function deletePost() {
+  console.log('------------')
+  var title_value = $('#title').val();
+  var content_value = $('#content').val();
+  var tags_value = $('#tags').val();
+  console.log(title_value);
+  const data = {};
+  data.title = title_value;
+  data.content = content_value;
+  data.tags = tags_value.split(',');
+  console.log(data);
+  
+  $.ajax({
+    'url': `https://richegg.top/posts/${id}`,
+    'method': 'DELETE',
+    'data': JSON.stringify(data),
+    xhrFields: {
+      withCredentials: true
+    },
+    'success': function(result) {
+       console.log(result);
+       window.location.href = `post.html?id=${id}`;
+    },
+    'error': function(err) {
+      console.log(err);
+    }
+  });
+}
+$(function(){
+    $('#delete').on('click', deletePost);
 });

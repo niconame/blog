@@ -12,9 +12,10 @@ $('#login-form').submit( (event) => {
   $.ajax({
     url: `https://richegg.top/login`,
     method: 'POST',
+    
     data: JSON.stringify(data),
-    'xhrFields': {
-      'withCredentials': true
+    xhrFields: {
+      withCredentials: true
     }
   })
     .then( (author) => {

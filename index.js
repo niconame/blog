@@ -35,6 +35,7 @@ $.ajax({
     }
     
     // 將文章列表的內容綁定到介面 (html 的 container)上
+    console.log(postListHtml);
     $('.container').html(postListHtml); 
   })
   .catch( (err) => {
