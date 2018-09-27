@@ -18,6 +18,7 @@ tagifyTags.on('duplicate', (e) => {
 // 連接 API
 $.ajax({
   'url': `https://yuer.tw/posts/${id}`,
+  contentType: 'application/json; charset=utf-8',
   'method': 'GET'
 })
   .then( (post) => {
@@ -45,7 +46,7 @@ function edit() {
   data.content = content_value;
   data.tags = tags_value.split(',');
   console.log(data);
-  
+
   $.ajax({
     'url': `https://yuer.tw/posts/${id}`,
     'method': 'PATCH',
@@ -79,11 +80,12 @@ function deletePost() {
   data.content = content_value;
   data.tags = tags_value.split(',');
   console.log(data);
-  
+
   $.ajax({
     'url': `https://yuer.tw/posts/${id}`,
     'method': 'DELETE',
     'data': JSON.stringify(data),
+    contentType: 'application/json; charset=utf-8',
     xhrFields: {
       withCredentials: true
     },

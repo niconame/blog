@@ -27,6 +27,7 @@ function edit() {
   $.ajax({
     'url': 'https://yuer.tw/posts',
     'method': 'POST',
+    contentType: 'application/json; charset=utf-8',
     'data': JSON.stringify(data),
     'xhrFields': {
       'withCredentials': true

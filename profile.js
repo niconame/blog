@@ -1,7 +1,8 @@
 let id = getURLParameter('id');
-// 連接 API 
+// 連接 API
 $.ajax({
   url: `https://yuer.tw/authors/test1`,
+  contentType: 'application/json; charset=utf-8',
   method: 'GET',
   'xhrFields': {
       'withCredentials': true
@@ -17,28 +18,27 @@ $.ajax({
     const address = author.address;
 
 
-    $('#author_name').html(name); 
-    $('#author_username').html(username); 
-    $('#author_password').html(password); 
-    $('#author_gender').html(gender); 
-    $('#author_address').html(address); 
-    
-    $('#author').attr('href', `profile.html?id=${author.id}`); 
+    $('#author_name').html(name);
+    $('#author_username').html(username);
+    $('#author_password').html(password);
+    $('#author_gender').html(gender);
+    $('#author_address').html(address);
+
+    $('#author').attr('href', `profile.html?id=${author.id}`);
 
   })
 
   // 失敗則執行
   .catch( (err) => {
-      
+
     if (err.status === 404) {
-      const notFound = ` 
+      const notFound = `
         <div style="text-align: center;">
           <p class="lead">
             查無此人。
           </p>
         </div>`;
-      
+
       $('.container').html(notFound);
     }
   });
-  

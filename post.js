@@ -1,7 +1,8 @@
 const id = getURLParameter('id');
-// 連接 API 
+// 連接 API
 $.ajax({
   url: `https://yuer.tw/posts/${id}`,
+  contentType: 'application/json; charset=utf-8',
   method: 'GET'
 })
 //成功後執行
@@ -14,28 +15,28 @@ $.ajax({
     const content = post.content;
     const tags = post.tags.join(',');
 
-    $('#post-title').html(title); 
-    $('#post-created-time').html(created_at); 
-    $('#post-updated-time').html(updated_at); 
-    $('#post-author').html(author); 
-    $('#post-content').html(content); 
-    $('#post-tags').html(tags); 
-    $('#edit').attr('href', `edit.html?id=${id}`); 
+    $('#post-title').html(title);
+    $('#post-created-time').html(created_at);
+    $('#post-updated-time').html(updated_at);
+    $('#post-author').html(author);
+    $('#post-content').html(content);
+    $('#post-tags').html(tags);
+    $('#edit').attr('href', `edit.html?id=${id}`);
 
   })
 
   // 失敗則執行
   .catch( (err) => {
-      
+
     if (err.status === 404) {
-      const notFound = ` 
+      const notFound = `
         <div style="text-align: center;">
           <p class="lead">
             查無此頁。
           </p>
         </div>`;
-      
+
       $('.container').html(notFound);
     }
-    
+
   });
