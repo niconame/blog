@@ -1,7 +1,7 @@
 let username = 'test1';
 // 抓取 profile.html 上使用者的資料
 $.ajax({
-  url: `https://richegg.top/authors/${username}`,
+  url: `https://yuer.tw/authors/${username}`,
   method: 'GET',
   'xhrFields': {
       'withCredentials': true
@@ -39,7 +39,7 @@ function send() {
 
   // 透過 API 修改已抓取到的使用者的資料
   $.ajax({
-      url: `https://richegg.top/authors/${username}`,
+      url: `https://yuer.tw/authors/${username}`,
       method: 'PATCH',
       data: JSON.stringify(data),
       'xhrFields': {

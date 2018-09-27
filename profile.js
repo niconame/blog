@@ -1,7 +1,7 @@
 let id = getURLParameter('id');
 // 連接 API 
 $.ajax({
-  url: `https://richegg.top/authors/test1`,
+  url: `https://yuer.tw/authors/test1`,
   method: 'GET',
   'xhrFields': {
       'withCredentials': true

@@ -25,7 +25,7 @@ function edit() {
   data.tags = tags_value.split(',');
   console.log(data);
   $.ajax({
-    'url': 'https://richegg.top/posts',
+    'url': 'https://yuer.tw/posts',
     'method': 'POST',
     'data': JSON.stringify(data),
     'xhrFields': {

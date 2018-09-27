@@ -1,7 +1,7 @@
 const id = getURLParameter('id');
 // 連接 API 
 $.ajax({
-  url: `https://richegg.top/posts/${id}`,
+  url: `https://yuer.tw/posts/${id}`,
   method: 'GET'
 })
 //成功後執行

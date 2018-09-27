@@ -10,7 +10,7 @@ $('#login-form').submit( (event) => {
   };
 // 連接 API
   $.ajax({
-    url: `https://richegg.top/login`,
+    url: `https://yuer.tw/login`,
     method: 'POST',
     
     data: JSON.stringify(data),

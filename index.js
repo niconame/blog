@@ -1,6 +1,6 @@
 // 取得所有文章
 $.ajax({
-  url: 'https://richegg.top/posts/',
+  url: 'https://yuer.tw/posts/',
   method: 'GET'
 })
   .then( (postList) => {

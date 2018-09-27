@@ -17,7 +17,7 @@ tagifyTags.on('duplicate', (e) => {
 })
 // 連接 API
 $.ajax({
-  'url': `https://richegg.top/posts/${id}`,
+  'url': `https://yuer.tw/posts/${id}`,
   'method': 'GET'
 })
   .then( (post) => {
@@ -47,7 +47,7 @@ function edit() {
   console.log(data);
   
   $.ajax({
-    'url': `https://richegg.top/posts/${id}`,
+    'url': `https://yuer.tw/posts/${id}`,
     'method': 'PATCH',
     contentType: 'application/json',
     'data': JSON.stringify(data),
@@ -81,7 +81,7 @@ function deletePost() {
   console.log(data);
   
   $.ajax({
-    'url': `https://richegg.top/posts/${id}`,
+    'url': `https://yuer.tw/posts/${id}`,
     'method': 'DELETE',
     'data': JSON.stringify(data),
     xhrFields: {
