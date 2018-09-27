@@ -91,7 +91,7 @@ function deletePost() {
     },
     'success': function(result) {
        console.log(result);
-       window.location.href = `post.html?id=${id}`;
+       window.location.href = `index.html`;
     },
     'error': function(err) {
       console.log(err);
