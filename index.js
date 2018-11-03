@@ -1,6 +1,6 @@
 // 取得所有文章
 $.ajax({
-  url: 'https://yuer.tw/posts/',
+  url: 'https://yuer.tw/chucoodoor',
   contentType: 'application/json; charset=utf-8',
   method: 'GET'
 })
